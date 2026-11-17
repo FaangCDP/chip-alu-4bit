@@ -16,12 +16,18 @@ module tt_um_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
-  assign uio_oe  = 0;
+ ALU alu_utama (
+    .A  (ui_in[3:0]),   // Input A (4-bit) masuk ke pin 0..3
+    .B  (ui_in[7:4]),   // Input B (4-bit) masuk ke pin 4..7
+    .Cs (uio_in[0]),    // Kontrol Substractor (1-bit) ke pin IO 0
+    .Op (uio_in[2:1]),  // Opcode (2-bit) ke pin IO 1..2
+    .Sum  (uo_out[3:0]),  // Hasil ALU (4-bit) keluar ke pin output 0..3
+    .Cout  (uo_out[4])     // Carry Out (1-bit) keluar ke pin output 4
+  );
 
-  // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+  // Matikan sisa pin yang tidak dipakai
+  assign uo_out[7:5] = 3'b000;
+  assign uio_out     = 8'b00000000;
+  assign uio_oe      = 8'b00000000;
 
 endmodule
