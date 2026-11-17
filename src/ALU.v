@@ -134,7 +134,7 @@ endmodule
 module ALU (
   input [3:0] A,
   input [3:0] B,
-  input S,
+  input Sub,
   input [1:0] Op,
   output Cout,
   output [3:0] Sum
@@ -149,7 +149,7 @@ module ALU (
   Substractor Substractor_i0 (
     .A( A ),
     .B( B ),
-    .Cs( S ),
+    .Cs( Sub ),
     .S( s3 ),
     .C( Cout )
   );
