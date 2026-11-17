@@ -19,7 +19,7 @@ module tt_um_example (
  ALU alu_utama (
     .A  (ui_in[3:0]),   // Input A (4-bit) masuk ke pin 0..3
     .B  (ui_in[7:4]),   // Input B (4-bit) masuk ke pin 4..7
-    .Cs (uio_in[0]),    // Kontrol Substractor (1-bit) ke pin IO 0
+    .Sub (uio_in[0]),    // Kontrol Substractor (1-bit) ke pin IO 0
     .Op (uio_in[2:1]),  // Opcode (2-bit) ke pin IO 1..2
     .Sum  (uo_out[3:0]),  // Hasil ALU (4-bit) keluar ke pin output 0..3
     .Cout  (uo_out[4])     // Carry Out (1-bit) keluar ke pin output 4
